@@ -1,0 +1,29 @@
+1. Installation
+
+1.1 Compiling and Loading FFI
+
+    (load "/path/to/mac-types/defsys.lisp")
+    (compile-system 'mac-types)
+    (load-system 'mac-types)
+
+    At this point the basic type definitions should be in place. Basic
+    conversion routines for the 64bit integer will work.
+
+1.2 Compiling and Loading C support code (optional)
+
+    % cd /path/to/mac-types
+    % make
+ 
+    This should compile the C support code for 64bit integer
+    manipulation into 'mac-types-support.bundle'. This bundle contians
+    trivial wrappers to allow manipulation of 64bit integers by
+    reference from LispWorks converting them.
+
+    (fli:register-module
+    "/full/path/to/mac-types/mac-types-support.bundle)
+
+2. Test
+
+Very limited testing on the conversion routines for the UnsignedWide,
+UInt64, and bignum/fixnum data. There are known signed/unsigned bugs
+which need to be taken care of.
